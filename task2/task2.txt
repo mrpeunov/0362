@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int a, b, c;
+    scanf ("%d" "%d" "%d", &a, &b, &c);
+    int d, x,y, x0, y0,x1,y1, k,r,m ,l, x00, y00;
+    y0=x0=0;
+    m=a;
+    l=b;
+    while(m%l) //поиск НОД
+    {
+        r=m%l;
+        m=l;
+        l=r;
+    }
+    d=l;
+    printf("NOD=%d\n", d);
+    a=a/d;
+    b=b/d;
+    c=c/d;
+    printf ("a=%d ", a);
+    printf ("b=%d ", b);
+    printf ("c=%d\n", c);
+    while(a*x0+b*y0!=c)
+    {
+        if (a*b>0 && (c<a || c<b))
+        {
+            for (x0=-1; x0<0; x0--)
+            {
+                for (y0=1; y0>0; y0++)
+                {
+                    if (a*x0+b*y0==c)
+                    {
+
+                        printf ("x0=%d" "y0=%d\n", x0, y0);
+                        printf("%d*%d+%d*%d=%d\n", a,x0,b,y0,c);
+                        break;
+                    }
+                }
+            }
+        }
+        else
+        {
+
+            for (x0=1; x0>0; x0++)
+            {
+                for (y0=1; y0>0; y0++)
+                {
+                    if (a*x0+b*y0==c)
+                    {
+
+                        printf ("x0=%d" "y0=%d\n", x0 ,y0);
+                        printf("%d*%d+%d*%d=%d\n", a,x0,b,y0,c);
+                        break;
+                    }
+                }
+            }
+
+        }
+        x1=x0*c;
+        y1=y0*c;
+        printf("x1=%d" "y1=%d\n", x1, y1);
+        x=x1+b*k;
+        y=y1-a*k;
+        printf("x=%d" "y=%d\n", x, y);
+        printf("k=");
+        scanf("%d\n", k);
+        x=x1+b*k;
+        y=y1-a*k;
+        printf("x=%d" "y=%d", x ,y);
+    }
+
+
+    return 0;
+}
