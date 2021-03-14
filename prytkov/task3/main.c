@@ -69,6 +69,7 @@ int main()
             return 6;
         }
     }
+    free(list);
     return 0;
 }
 
