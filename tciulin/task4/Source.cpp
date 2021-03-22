@@ -1,7 +1,7 @@
 #include<iostream>
 
 using namespace::std;
-int proverka(int N, int *m)//проверяем делители на взаимно простые
+int proverka(int N, int *m)
 {
 	int b = 2;
 	for (int i = 0; i < N-1; i++)
@@ -23,21 +23,21 @@ int main()
 {
 	setlocale(LC_ALL, "Rus");
 	int N;
-	cout << "Китайская теорема об остатках!" << endl;
-	cout << "Введите кол-во чисел:";
+	cout << "Chinese Remainder Theorem!" << endl;
+	cout << "enter the number of numbers:";
 	cin >> N;
 	
 	int* a = new int[N];
 	int* m = new int[N];
 	int* mi = new int[N];
 	int* y = new int[N];
-	int X=0,M = 1, f = 0,z=1,prover;
-	//Вводим числа
+	int X=0,M = 1, f = 0,z=1;
+	
 	TryAgain:
 	for (int i = 0; i < N; i++)
 	{
 
-		cout << "Введите остаток  a и делитель m:\n ";
+		cout << "Enter the remainder of a and the divisor of m:\n ";
 		cout << "a =";
 		cin >> a[i];
 		cout << " m =";
@@ -45,20 +45,19 @@ int main()
 		
 		M = M * m[i];
 	}
-	//проверяем на корректность делители
+	
 	if (proverka(N, m) == 1)
 	{
-		cout << "Вы ввели неверные делители(они не взаимно простые числа),попробуйте еще раз:\n";
+		cout << "You entered the wrong divisors(they are not mutually prime numbers), try again:\n";
 		goto TryAgain;
 	}
-	cout << "Вы ввели:\n";
-	//выводим изначальные данные и Находим M(0)
+	cout << "You entered:\n";
+	
 	for (int i = 0; i < N; i++)
 	{
 		cout << "x = " << a[i] << " mod " << m[i] << endl;
 		mi[i] = M / m[i];
 	}
-	//для каждого выражения находим y(i)
 	for (int i = 0; i < N; i++)
 	{
 		if (mi[i] > m[i])
@@ -72,12 +71,11 @@ int main()
 		z = 1;
 		f = 0;
 	}
-	//считаем результат
 	for (int i = 0; i < N; i++)
 	{
 		X = X + mi[i] * y[i];
 	}
-	cout << "\nОтвет: ";
+	cout << "\nanswer: ";
 	cout << "X = "<<X;
 	delete[]a;
 	delete[]m;
