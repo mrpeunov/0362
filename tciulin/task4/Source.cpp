@@ -21,7 +21,7 @@ int proverka(int N, int *m)
 }
 int main()
 {
-	setlocale(LC_ALL, "Rus");
+	
 	int N;
 	cout << "Chinese Remainder Theorem!" << endl;
 	cout << "enter the number of numbers:";
@@ -31,33 +31,34 @@ int main()
 	int* m = new int[N];
 	int* mi = new int[N];
 	int* y = new int[N];
-	int X=0,M = 1, f = 0,z=1;
-	
+	int X=0,M = 1, f = 0,z=1,prover;
+
 	TryAgain:
 	for (int i = 0; i < N; i++)
 	{
 
-		cout << "Enter the remainder of a and the divisor of m:\n ";
+		cout << "Enter the remainder of a and the divisor of m:\n  ";
 		cout << "a =";
 		cin >> a[i];
-		cout << " m =";
+		cout << "m =";
 		cin >> m[i];
 		
 		M = M * m[i];
 	}
-	
+
 	if (proverka(N, m) == 1)
 	{
 		cout << "You entered the wrong divisors(they are not mutually prime numbers), try again:\n";
 		goto TryAgain;
 	}
 	cout << "You entered:\n";
-	
+
 	for (int i = 0; i < N; i++)
 	{
 		cout << "x = " << a[i] << " mod " << m[i] << endl;
 		mi[i] = M / m[i];
 	}
+
 	for (int i = 0; i < N; i++)
 	{
 		if (mi[i] > m[i])
@@ -71,6 +72,7 @@ int main()
 		z = 1;
 		f = 0;
 	}
+	
 	for (int i = 0; i < N; i++)
 	{
 		X = X + mi[i] * y[i];
