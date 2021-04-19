@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int num, k, p;
+    scanf("%d", &num);
+    int num2;
+    num2=num;
+    while (num2>0)//нахождение длины перестановки
+    {
+        k++;
+        num2=num2%10;
+    }
+    int a[k];
+    for (int i=0; i<k; i++)
+    {
+        a[i]=i+1;
+    }
+    int m=1;
+    int n=0;
+    int r=0;
+    int b[k];
+    for (int i=0; i<k; i++)
+    {
+        while (!(n>k))//возведение 10 в степень 
+        {
+            n++;
+            m=m*10;
+        }
+        p=num/m;
+        while (a[r]!=p)//на какой позиции первый элемент данной перестановки 
+        {
+            r++;
+        }
+        b[i]=r;
+        for (int j=r; j<k; j++)//удаление уже появившегося элемента p
+        {
+            a[j]=a[j+1];
+        }
+        a[k-1]=0;
+        k--;
+    }
+    //....
+    
+    return 0;
+}
