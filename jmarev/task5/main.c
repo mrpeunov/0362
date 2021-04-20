@@ -259,35 +259,19 @@ int main()
         };
         case 3:
         {
-            output=GetNextTransposition(input_data1);
-            if(output<0)
-            {
-                printf("Error\n");
-                return output;
-            };
-            printf("%d\n", output);
+            printf("%d\n", GetNextTransposition(input_data1));
         };
         case 4:
         {
             scanf("%d", &input_data2);
-            output=GetIndexFromTransposition(input_data1, input_data2);
-            if(output<0)
-            {
-                printf("Error\n");
-                return output;
-            };
-            printf("%d\n", output);
+
+            printf("%d\n", GetIndexFromTransposition(input_data1, input_data2));
         };
         case 5:
         {
             scanf("%d", &input_data2);
-            output=GetTranspositionFromIndex(input_data1, input_data2);
-            if(output<0)
-            {
-                printf("Error\n");
-                return output;
-            };
-            printf("%d\n", output);
+
+            printf("%d\n", GetTranspositionFromIndex(input_data1, input_data2));
         };
     };
 
