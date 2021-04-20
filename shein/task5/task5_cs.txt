@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace task5
+{
+    class Program
+    {
+        static int Fact(int decim)      //Let's find factorial
+        {
+            if (decim < 0)
+            {
+                Console.WriteLine($"negative numbers are not allowed, your number is: {decim}");
+                return -1;
+            }
+            if ((decim == 0) || (decim == 1))
+                return 1;
+            return decim * Fact(decim - 1);
+        }
+        static string DecIntoFactorial(int number)     //turning decimal number into factorial
+        {
+            int i = 2;
+            List<int> remainders = new List<int>(); //list of remainders
+            string result = "";                     // number as factorial
+            while (number / i != 0)
+            {
+                remainders.Add(number % i);     //adds remainder in the end of list
+                number = number / i;
+                i++;
+            }
+            remainders.Add(number % i);
+
+            int[] rems = remainders.ToArray<int>();         // turning list into array
+
+            int lenght = rems.Length;
+            for (i = lenght-1; i >= 0; i--)             //reversing array of rems
+            {
+                result += rems[i].ToString();           //result is a string, so turning our array into string
+            }
+
+            return result;
+        }
+
+        static int FactIntoDec(string fact) // turning factorial number into decimal
+        {
+            int result = 0;
+            int lenght = fact.Length;
+            int factorial = Int32.Parse(fact);
+            for (int i = 1; i <= lenght; i++)
+            {
+                result = result + (factorial % 10) * Fact(i);
+                factorial = factorial / 10;
+            }
+
+            return result; 
+        }
+        
+        static void Main()
+        {
+            int  dec = 0;
+            string res = "";
+            int fact = 0;
+            Console.WriteLine("enter dec for turning into factorial: ");
+            dec = Int32.Parse(Console.ReadLine());
+            res = DecIntoFactorial(dec);
+            Console.WriteLine(res);
+            Console.WriteLine("enter factorial for turning into dec: ");
+            fact = Int32.Parse(Console.ReadLine());
+            res = FactIntoDec(fact.ToString()).ToString();
+            Console.WriteLine(res);
+        }
+
+        
+    }
+}
