@@ -263,7 +263,7 @@ int main()
             {
                 printf("Error\n");
                 return output;
-            }
+            };
             printf("%d\n", output);
         };
         case 4:
@@ -274,7 +274,7 @@ int main()
             {
                 printf("Error\n");
                 return output;
-            }
+            };
             printf("%d\n", output);
         };
         case 5:
@@ -285,7 +285,7 @@ int main()
             {
                 printf("Error\n");
                 return output;
-            }
+            };
             printf("%d\n", output);
         };
     };
