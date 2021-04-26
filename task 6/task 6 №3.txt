@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+int main()
+{
+    setlocale(LC_ALL, "rus");//поддержка русского алфавита
+
+    int n, m, k;
+    printf("Введите кол-во элементов:");
+    scanf ("%d", &n);
+    int a[n];
+    printf("Введите элементы:");
+    for (int i=0; i<n; i++)
+    {
+        scanf("%d",&m);
+        a[i]=m;
+    }
+    k=pow(2, n);
+    printf("Введите число для сравнения:");
+    int sravn;
+    scanf ("%d", &sravn);
+    int h;//вспомогательная переменная
+    for (int i=0; i<n; i++)//меняется число для сравнения с последним элементом массива
+    {
+        if (a[i]==sravn)
+        {
+            h=a[i];
+            a[i]=a[n-1];
+            a[n-1]=h;
+        }
+    }
+    for (int i=0; i<k-1; i++)//производит рассчеты не включая последний элемент массива
+    {
+        printf("{");
+        for (int j=0; j<n; j++)
+            if (i & (1<<j))
+                printf("%d",a[j]);
+                printf("}");
+        printf("\n");
+    }
+    return 0;
+}

@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+int main()
+{
+    setlocale(LC_ALL, "rus");//поддержка русского алфавита
+
+    int n, m, k;
+    printf("Введите кол-во элементов:");
+    scanf ("%d", &n);
+    int a[n];
+    printf("Введите элементы:");
+    for (int i=0; i<n; i++)
+    {
+        scanf("%d",&m);
+        a[i]=m;
+    }
+    k=pow(2, n);//количество подмножеств
+    int uslovie[k];
+    int bits=0;
+    for (int i=0; i<k; i++)
+    {
+        while(a[i]>0)//количество 1 в двоичной записи числа
+        {
+            if (a[i]%2 != 0)
+                bits++;
+            a[i]/=2;
+        }
+        uslovie[i] = bits;
+        if  (uslovie[i]==k)//проверка соответствует ли число 1 требуемому
+        {
+        printf("{");
+        for (int j=0; j<n; j++)
+            if (i & (1<<j))
+                printf("%d",a[j]);
+                printf("}");
+        printf("\n");
+        }
+    }
+    return 0;
+}
