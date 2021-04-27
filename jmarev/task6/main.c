@@ -8,8 +8,8 @@ char** GetAllSubsets(int m,char* set)
 {
     size_t i,k,counter_for_element,element_len;
     char** array;
-    array=(char**)malloc(pow(2,m)*sizeof(char*));
-    array[0]="\0";
+    array=(char**)malloc((pow(2,m)-1)*sizeof(char*));
+
     for(i=1;i<pow(2,m);i++)
     {
         element_len=0;
@@ -79,10 +79,11 @@ int main()
     case 1:
     {
         array_p=GetAllSubsets(M,set);
-        for(i=0;i<pow(2,M);i++)
+        for(i=0;i<(pow(2,M)-1);i++)
         {
             printf("{%s}\n",array_p[i]);
         };
+        break;
     }
     case 2:
     {
@@ -90,13 +91,7 @@ int main()
         array_p=GetAllSubsets(M,set);
 
         GetKElementsSubsets(N,M,array_p);
-        /*for(i=0;i<(pow(2,M)-1);i++)
-        {
-            if(strlen(array_p[i]==N))
-            {
-                printf("%s\n",array_p[i]);
-            };
-        };*/
+        break;
     }
     case 3:
     {
@@ -104,10 +99,11 @@ int main()
         symbol=getc(stdin);
         array_p=GetAllSubsets(M,set);
         GetSubsetsContainingElement(symbol,M,array_p);
+        break;
     }
     };
     free(set);
-    for(i=0;i<pow(2,M);i++)
+    for(i=0;i<(pow(2,M)-1);i++)
     {
         free(array_p[i]);
     };
