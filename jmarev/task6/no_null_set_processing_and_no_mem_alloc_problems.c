@@ -8,8 +8,7 @@ char** GetAllSubsets(int m,char* set)
 {
     size_t i,k,counter_for_element,element_len;
     char** array;
-    array=(char**)malloc((pow(2,m))*sizeof(char*));
-    array[0]=" \0";
+    array=(char**)malloc((pow(2,m)-1)*sizeof(char*));
     for(i=1;i<pow(2,m);i++)
     {
         element_len=0;
