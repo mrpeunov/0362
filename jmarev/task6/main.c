@@ -101,6 +101,7 @@ int main()
     }
     case 3:
     {
+        fflush(stdin);
         symbol=getc(stdin);
         array_p=GetAllSubsets(M,set);
         GetSubsetsContainingElement(symbol,M,array_p);
