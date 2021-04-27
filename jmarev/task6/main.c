@@ -57,7 +57,6 @@ void GetSubsetsContainingElement(char subset_element,int m,char** array_p)
         {
             if(array_p[i][t]==subset_element)
             {
-                printf("1\n");
                 printf("%s\n",array_p[i]);
             };
         }
