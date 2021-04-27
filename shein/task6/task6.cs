@@ -34,10 +34,7 @@ namespace task6
                 if ((set[i].Length - 2) == k)
                 {
                     result.Add(set[i]);
-                   
                 }
-                    
-
             }
 
             return result;
@@ -88,7 +85,7 @@ namespace task6
                         Console.WriteLine(ksubs[0]);
 
                     else if (ksubs.Count > 1)
-                        for (int i = ksubs.Count - 1; i > 0; i--)
+                        for (int i = 0; i < ksubs.Count; i++)
                             Console.WriteLine(ksubs[i]);
                     else
                         Console.WriteLine("element with such lenght not found:(");
