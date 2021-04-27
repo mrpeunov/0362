@@ -8,8 +8,8 @@ char** GetAllSubsets(int m,char* set)
 {
     size_t i,k,counter_for_element,element_len;
     char** array;
-    array=(char**)malloc((pow(2,m)-1)*sizeof(char*));
-
+    array=(char**)malloc((pow(2,m))*sizeof(char*));
+    array[0]=" \0";
     for(i=1;i<pow(2,m);i++)
     {
         element_len=0;
@@ -39,6 +39,10 @@ char** GetAllSubsets(int m,char* set)
 void GetKElementsSubsets(int n, int m,char** array_p)
 {
     size_t i;
+    if(n==0)
+    {
+        printf("%s\n",array_p[0]);
+    }
     for(i=0;i<(pow(2,m)-1);i++)
     {
         if(strlen(array_p[i])==n)
