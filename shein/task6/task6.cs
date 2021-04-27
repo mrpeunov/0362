@@ -58,7 +58,7 @@ namespace task6
             bool check = true;
             while (check)
             {
-                Console.WriteLine("Enter elements of integer set:");
+                Console.WriteLine("Enter elements of set:");
                 string elems = Console.ReadLine();
                 string[] temp = elems.Split(new Char[] {' '});
                 int lenght = (int) Math.Pow(2, temp.Length);
