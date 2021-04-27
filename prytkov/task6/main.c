@@ -20,6 +20,7 @@ int output_subsets(node**, int);
 int *create_set(int);
 int get_length(node*);
 node *add_item(node*, int);
+void free_memory(node*);
 void hint();
 
 int main()
@@ -73,7 +74,7 @@ int main()
             printf("Подмножества вашего множества:\n");
             subsets = generate_all_subsets(set, length, &count_of_subsets);
             if (subsets == NULL)
-                return 5;
+                return 4;
             output_subsets(subsets, count_of_subsets);
             break;
         }
@@ -91,6 +92,7 @@ int main()
             return 0;
         }
     }
+    free(set);
     return 0;
 }
 
@@ -103,7 +105,6 @@ int output_subsets_with_element(int *set, int length, int element, node **subset
     * argument subsets - array of lists with subsets
     * argument count - count of all subsets
     * Upon successful completion function shall output all subsets with entered element */
-
     node *current;
     if (set == NULL || subsets == NULL)
         subsets = generate_all_subsets(set, length, &count);
@@ -121,6 +122,7 @@ int output_subsets_with_element(int *set, int length, int element, node **subset
             printf("}\n");
         }
     }
+    return 0;
 }
 
 int output_k_element_subsets(int *set, int length, int k, node **subsets, int count)
@@ -137,6 +139,11 @@ int output_k_element_subsets(int *set, int length, int k, node **subsets, int co
     node *current;
     if (set == NULL || subsets == NULL)
         subsets = generate_all_subsets(set, length, &count);
+    if (k == 0)
+    {
+        printf("{ 0 }\n");
+        return 1;
+    }
     for (size_t i = 0; i < count; i++)
     {
         if (get_length(subsets[i]) == k)
@@ -153,6 +160,8 @@ int output_k_element_subsets(int *set, int length, int k, node **subsets, int co
             printf("}\n");
         }
     }
+    for (size_t i = 0; i < count; i++)
+        free_memory(subsets[i]);
     return 0;
 }
 
@@ -213,6 +222,8 @@ int output_subsets(node **subsets, int count)
         }
         printf("}\n");
     }
+    for (size_t i = 0; i < count; i++)
+        free_memory(subsets[i]);
     return 0;
 }
 
@@ -319,4 +330,20 @@ node *add_item(node *head, int value)
     current->next->value = value;
     current->next->next = NULL;
     return head;
+}
+
+void free_memory(node *head)
+{
+    /* Realisation of memory release algorithm (for lists)
+     *
+     * argument head - pointer on first node in list
+     * void function, no returning value */
+
+    node *current = head, *temp;
+    while (current != NULL)
+    {
+        temp = current;
+        current = current->next;
+        free(temp);
+    }
 }
