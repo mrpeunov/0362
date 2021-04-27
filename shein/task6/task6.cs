@@ -99,7 +99,7 @@ namespace task6
                     SubWithEl = SubWithElement(el, Alls);
                     if (SubWithEl.Count == 0)
                         Console.WriteLine("Element is not found:(");
-                    for (int i = SubWithEl.Count - 1; i > 0; i--)
+                    for (int i = 0; i < SubWithEl.Count; i++)
                         Console.WriteLine(SubWithEl[i]);
                 }
 
