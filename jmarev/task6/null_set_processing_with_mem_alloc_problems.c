@@ -101,9 +101,9 @@ int main()
     set[M]='\0';
     array_p=GetAllSubsets(M,set);
     if(array_p==NULL)
-        {
-            return 1;
-        };
+    {
+        return 1;
+    };
     switch (mode)
     {
     case 1:
