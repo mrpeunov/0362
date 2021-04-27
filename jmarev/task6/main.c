@@ -8,8 +8,8 @@ char** GetAllSubsets(int m,char* set)
 {
     size_t i,k,counter_for_element,element_len;
     char** array;
-    array=(char**)malloc((pow(2,m)-1)*sizeof(char*));
-
+    array=(char**)malloc(pow(2,m)*sizeof(char*));
+    array[0]="\0";
     for(i=1;i<pow(2,m);i++)
     {
         element_len=0;
@@ -43,7 +43,7 @@ void GetKElementsSubsets(int n, int m,char** array_p)
     {
         if(strlen(array_p[i])==n)
         {
-            printf("%s\n",array_p[i]);
+            printf("{%s}\n",array_p[i]);
         };
     };
 };
@@ -57,7 +57,7 @@ void GetSubsetsContainingElement(char subset_element,int m,char** array_p)
         {
             if(array_p[i][t]==subset_element)
             {
-                printf("%s\n",array_p[i]);
+                printf("{%s}\n",array_p[i]);
             };
         }
     };
@@ -79,9 +79,9 @@ int main()
     case 1:
     {
         array_p=GetAllSubsets(M,set);
-        for(i=0;i<(pow(2,M)-1);i++)
+        for(i=0;i<pow(2,M);i++)
         {
-            printf("%s\n",array_p[i]);
+            printf("{%s}\n",array_p[i]);
         };
     }
     case 2:
@@ -107,7 +107,7 @@ int main()
     }
     };
     free(set);
-    for(i=0;i<(pow(2,M)-1);i++)
+    for(i=0;i<pow(2,M);i++)
     {
         free(array_p[i]);
     };
