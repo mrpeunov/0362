@@ -29,7 +29,7 @@ bool NodeComp(node a, node b) //comparator for node structure
 
 bool CipherComp(cipher a, cipher b) //comparator for cipher structure
 {
-    return a.frequency < b.frequency;
+    return a.frequency > b.frequency;
 }
 
 void PostfixDelete(node* current_node,node* root)
@@ -123,7 +123,6 @@ int main()
                 result[i].code.insert(result[i].code.end(),'1');
                 continue;
             }
-
         }while(current_node_pointer->left != nullptr);//if one of the links(i've chosen to check the lef one) is equal to NULL,
         current_node_pointer->flag = true;              //it means that both links are equal to NULL and it's leaf of the tree
         if(current_node_pointer->symbol != '$')
@@ -133,18 +132,18 @@ int main()
         }
     }
 
-    PostfixDelete(&alphabet[0],&alphabet[0]);
-    alphabet.clear();
-    sort(result.begin(),result.end(),CipherComp);
-    for(i = 0;i < size_var;i ++)
+    PostfixDelete(&alphabet[0],&alphabet[0]); //free the memory allocated for the tree
+    alphabet.clear();         //free the memory allocated for the vector(there is just one element left by this moment)
+
+    sort(result.begin(),result.end(),CipherComp);//sort the code table(cells of the most frequently used symbols go first)
+    for(i = 0;i < size_var;i ++)                 //print the code table
     {
         cout << result[i].symbol << "   " << result[i].code << endl;
     }
 
-    cin.clear();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); //clean input stream buffer
     getline(cin,message);       //scan message
-    cout << message << endl;
+
     for(i = 0;i < message.size();i ++)
     {
         t = 0;
@@ -154,7 +153,7 @@ int main()
         }
         encoded_message.insert(encoded_message.size(),result[t].code);
     }
-    result.clear();
-    cout << encoded_message;            //print encoded message
+    result.clear();         //free the memory allocated for the code table
+    cout << encoded_message;//print encoded message
     return 0;
 }
