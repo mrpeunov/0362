@@ -83,7 +83,6 @@ int main()
     {
         sort(alphabet.begin(),alphabet.end(),NodeComp);
 
-        printf("\n");
 
         leaf_one=new node;
         leaf_two=new node;
