@@ -74,7 +74,11 @@ int main()
         i++;
 
     }while(current_symbol!='0');
-
+    if(alphabet.size()==1)
+    {
+        printf("Too few elements entered\n");
+        return 0;
+    }
     sort(alphabet.begin(),alphabet.end(),NodeComp);
     size_var = alphabet.size();
     result.resize(alphabet.size());
